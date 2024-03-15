@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1015309684249",
+    "project_id": "ark-backend",
+    "storage_bucket": "ark-backend.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1015309684249:android:439f22620199dce33de488",
+        "android_client_info": {
+          "package_name": "com.android.ark"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1015309684249-g2gtr1jgm9troklal4llkhcfgt505b2a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAL6weXJo8g_tRxnJ0SfRlvte5zlYlDOow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1015309684249-g2gtr1jgm9troklal4llkhcfgt505b2a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
