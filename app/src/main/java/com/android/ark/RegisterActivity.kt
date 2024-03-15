@@ -16,6 +16,7 @@ class RegisterActivity : AppCompatActivity() {
         supportActionBar?.hide()
         window.statusBarColor = ContextCompat.getColor(this, R.color.black)
 
+//  screen navigation to Login Activity
         binding.loginBtn.setOnClickListener {
             val intent= Intent(this, LoginActivity::class.java)
             startActivity(intent)

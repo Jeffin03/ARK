@@ -17,11 +17,12 @@ class LoginActivity : AppCompatActivity() {
         supportActionBar?.hide()
         window.statusBarColor = ContextCompat.getColor(this, R.color.black)
 
+//  Navigation to Register Activity
         binding.signupBtn.setOnClickListener {
             val intent= Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
-
+//  Login using Shared Preference
         val sharedPref = getSharedPreferences("pref", MODE_PRIVATE)
 
 
