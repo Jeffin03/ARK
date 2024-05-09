@@ -25,5 +25,8 @@
     <string name="no_downloaded_content">No Downloaded Content</string>
     <string name="search">Search</string>
     <string name="sort_by">Sort By</string>
+    <string name="upload">Upload</string>
+    <string name="add_file">Add File</string>
+    <string name="complete_upload">Complete Upload</string>
 
 </resources>
