@@ -36,7 +36,7 @@ class UploadActivity : AppCompatActivity() {
             insets
         }
 
-        val buttonUpload = findViewById<Button>(R.id.button3)
+        val buttonUpload = findViewById<Button>(R.id.button4)
         buttonUpload.setOnClickListener {
             // Open the file chooser when the upload button is clicked
             fileChooser.launch("*/*")
@@ -48,7 +48,7 @@ class UploadActivity : AppCompatActivity() {
     }
 
     private fun uploadFile(uri: Uri) {
-        val fileRef = storage.reference.child("Notes/${uri.lastPathSegment}")
+        val fileRef = storage.reference.child("path/to/your/file")
         val uploadTask = fileRef.putFile(uri)
 
         uploadTask.addOnFailureListener {

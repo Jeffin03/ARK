@@ -1,5 +1,7 @@
 package com.android.ark
 
+import FileAdapter
+import FileData
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
@@ -10,7 +12,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.RecyclerView
 import com.android.ark.databinding.ActivitySearchBinding // Import your generated binding class
+import com.google.firebase.firestore.FirebaseFirestore
 
 class SearchActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySearchBinding // Declare binding variable
@@ -35,6 +39,19 @@ class SearchActivity : AppCompatActivity() {
         binding.imageView9.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
+        }
+
+        // Initialize RecyclerView
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+
+        // Fetch data from Firestore and set the adapter
+        val db = FirebaseFirestore.getInstance()
+        db.collection("files").get().addOnSuccessListener { result ->
+            val files = result.map { document ->
+                document.toObject(FileData::class.java)
+            }
+            val adapter = FileAdapter(files)
+            recyclerView.adapter = adapter
         }
     }
 
