@@ -4,11 +4,16 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.core.content.ContextCompat
 import com.android.ark.databinding.ActivityRegisterBinding
 
+import com.google.firebase.auth.FirebaseAuth
+
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
@@ -16,38 +21,34 @@ class RegisterActivity : AppCompatActivity() {
         supportActionBar?.hide()
         window.statusBarColor = ContextCompat.getColor(this, R.color.black)
 
-//  screen navigation to Login Activity
+        // Initialize Firebase Auth
+        auth = FirebaseAuth.getInstance()
+
+        // Screen navigation to Login Activity
         binding.loginBtn.setOnClickListener {
-            val intent= Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
 
-        val sharedPref = getSharedPreferences("pref", MODE_PRIVATE)
-        val editor = sharedPref.edit()
-
         val registerButton = binding.submitBtn
 
-        //onclick of Register button
-        registerButton.setOnClickListener{
-//            getting values from view using findViewByID
-            val name = binding.textUsername
-            val password = binding.textPassword
-            val confirmPassword = binding.confirmPs
+        // On click of Register button
+        registerButton.setOnClickListener {
+            val name = binding.textUsername.text.toString()
+            val password = binding.textPassword.text.toString()
 
-            //comparing password and confirmPassword
-            if(password.text.toString() != confirmPassword.text.toString()){
-                confirmPassword.error = "Password mismatch"
-            }
-
-            //saving multiple data in sharedPref
-            editor.apply{
-                putString("name", name.text.toString())
-                putString("password", password.text.toString())
-                apply()
-            }
-
-            val intent = Intent(this,LoginActivity::class.java)
-            startActivity(intent)
+            auth.createUserWithEmailAndPassword(name, password)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        // Sign up success
+                        val intent = Intent(this, LoginActivity::class.java)
+                        startActivity(intent)
+                    } else {
+                        // If sign up fails, display a message to the user.
+                        Log.w("Register: ", "createUserWithEmail:failure", task.exception)
+                        binding.textPassword.error = "Authentication failed."
+                    }
+                }
         }
     }
 }

@@ -19,5 +19,11 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="search_lecture_notes_here">Search Lecture notes here</string>
+    <string name="forum">Forum</string>
+    <string name="forum_link">forum link</string>
+    <string name="no_downloaded_content">No Downloaded Content</string>
+    <string name="search">Search</string>
+    <string name="sort_by">Sort By</string>
 
 </resources>
