@@ -33,6 +33,16 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, SearchActivity::class.java)
             startActivity(intent)
         }
+
+        binding.textView2.setOnClickListener {
+            val intent = Intent(this, SearchActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.uploadButton.setOnClickListener {
+            val intent = Intent(this, UploadActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun updateEmptyTextViewVisibility(linearLayout: LinearLayout, emptyTextView: TextView) {
